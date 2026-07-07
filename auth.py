@@ -30,15 +30,14 @@ def daftar(database):
         database[username] = {'password' : encrypted,
                                'status' : status,
                                'salah_input' : salah}
-        return
+        
+        return 
 
 
 
 
 def login(database):
     while True:
-        global masuk
-        masuk = ""
         username = input("Masukkan Username: ")
         if username not in database:
             print("\n(!) Pengguna Tidak Ditemukan\n")
@@ -52,7 +51,8 @@ def login(database):
                 print("Tidak Valid!")
                 continue
         elif database[username]['status'] == "NONAKTIF":
-            print("(!) Akun Anda Sedang DiNonaktifkan\nHubungi Admin Untuk Memulihkan Akun\n")
+            print("(!) Anda Sudah Gagal Log in Lebih dari Tiga Kali, Akun di Nonaktifkan Sementara\n")
+            print("==> Silakan Hubungi Admin Untuk Memulihkan Akun\n")
             return
 
         password = input("Masukkan Password: ")
@@ -67,28 +67,20 @@ def login(database):
             if database[username]['salah_input'] >= 3:
                 database[username]['status'] = "NONAKTIF"
 
-
-                fungsiLog(username, ngapain = "Salah Password 3 Kali", note = "[WARNING] Indikasi Brute Force, Akun di Non-Aktifkan")
-
-                masuk = ""
-                print("\n(!) ALERT: Anda Sudah Gagal Log in Lebih dari Tiga Kali, Akun di Nonaktifkan Sementara")
-                print("==> Silakan Hubungi Admin Untuk Memulihkan Akun\n")
-                break
+                fungsiLog(username, ngapain = "Salah Password 3 Kali", note = "[WARNING] Indikasi Brute Force, Akun di Non-Aktifkan. LOG OUT.")
+                
+                raise Exception ("Terindikasi Melakukan Brute-Force")
             continue
         else:
-            masuk = username
             database[username]['salah_input'] = 0
             print("(!) Log in Berhasil!")
 
             fungsiLog(username, ngapain = "Login Berhasil")
-        return
+        return username
     
       
     
 def cek_database(database):
-    if not masuk:
-        print("(!) Silakan Login Terlebih Dahulu!\n")
-        return
     print("~"*43)
     print("DATABASE".center(43))
     print("~"*43)
