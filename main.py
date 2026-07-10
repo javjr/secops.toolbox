@@ -2,22 +2,30 @@
 import os
 import auth
 from logger import fungsiLog
+from parser import read_parser
 
-database = {'admin':{'password': auth.enkripsi('hengkerberbahaya001'),
+database = auth.data_json_keluar ()
+if "admin" not in database:
+    database["admin"]= {'password': auth.enkripsi('hengkerberbahaya001'),
                      'status': 'AKTIF',
-                     'salah_input': 0}}
+                     'salah_input': 0}
+    auth.data_json_masuk (database)
+    
 masuk = ""
-
 
 #__________________
 #| LOOP CLI UTAMA | 
-os.system("clear")
+
 while True:
+    os_type = os.name
+    match os_type:
+        case "posix": os.system("clear")
+        case "nt": os.system("cls")
     print("\n")
     print("="*50)
     print("SECOPS TOOLBOX v1.0".center(50))
     print("="*50)
-    print("\n1. Register\n2. Login\n3. Cek Database (Admin Only)\n4. Log Out ")
+    print("\n1. Register\n2. Login\n3. Cek Database (Admin Only)\n4. Log Out\n5. Log Parser (Amin Only)")
     print("_"*50,"\n")
 
     pilih = input("Masukkan No. Pilihan: ")
@@ -52,13 +60,29 @@ while True:
             if masuk != 'admin':
                 fungsiLog(masuk, ngapain = "mencoba masuk database as admin", note = "[WARNING] LOG OUT")
                 raise Exception ("WARNING! Anda Bukan Admin")
-            auth.cek_database(database)
+            else:
+                auth.cek_database(database)
+                input("\n[Tekan ENTER untuk kembali ke menu]")
         except Exception as pesan:
             print(pesan)
-            break
+            continue
     elif pilih == "4":
+        if not masuk:
+            print("(!) Silakan Login Terlebih Dahulu, sebagai ADMIN!\n")
+            continue
+        try:
+            if masuk != 'admin':
+                fungsiLog(masuk, ngapain = "mencoba masuk database as admin", note = "[WARNING] LOG OUT")
+                raise Exception ("WARNING! Anda Bukan Admin")
+            read_parser()
+            input("\n[Tekan ENTER untuk kembali ke menu]")
+        except Exception as pesan:
+            print(pesan)
+            continue
+    elif pilih == "5":
         if auth.keluar():
             fungsiLog(masuk, ngapain = "Log Out")
+            auth.data_json_masuk (database)
             break
         else:
             continue

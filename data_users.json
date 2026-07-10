@@ -1,0 +1,47 @@
+{
+    "admin": {
+        "password": "4dc62787a333c6911fd3f83d913e15571865d063537724e34527abd838c920b6",
+        "status": "AKTIF",
+        "salah_input": 0
+    },
+    "daffa": {
+        "password": "c9ebe2398bc8546a21516af40f070ac3fe29c646c03ae1dd1e0874723c0f48d6",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "ertyv": {
+        "password": "e2d7c614e22daf6a5a0291d785b6d763739c83c8a5f6232cd5d67a72c4e4ca45",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "elvi": {
+        "password": "47356d771e9accb0d1609efe449c87dab009da2d8feca04f96ade2ca602ba860",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "elsaa": {
+        "password": "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "diantara": {
+        "password": "f15a3a5d34619f23d79d4124224e69f757a36d8ffb90aa7c17bf085ceb6cd53a",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "edy": {
+        "password": "3f531c1beeff28a6e1cf64cabe6e951533e1148f8eb7a7828be1dc68e8b49911",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "alien": {
+        "password": "c8c696f1870e8b64fb1a2f7eed96b5548f5368184a9220d80f21e25322cacc98",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "daud": {
+        "password": "43385991f0be5fed6db7fb640c5f510d41bcaac6ecca6c842a0c2a2d2d2bf510",
+        "status": "aktif",
+        "salah_input": 0
+    }
+}

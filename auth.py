@@ -1,17 +1,26 @@
 import hashlib
 from logger import fungsiLog
+import json
+from parser import parserLog
 
+rekap_salah = {}
 #__________
 #| FUNGSI |
 def enkripsi(password):
     password_to_encrypt = password.encode('utf-8')
     return hashlib.sha256(password_to_encrypt).hexdigest()
 
+def data_json_masuk (database):
+    with open ("data_users.json", "w") as file:
+        return json.dump(database, file, indent = 4)
+
+def data_json_keluar ():
+    with open ("data_users.json", "r") as file:
+        return json.load(file)
+
 
 def daftar(database):
     while True:
-        global masuk
-        masuk = ""
         username = input("Masukkan Username unik: ").strip()
         if not username:
             print("(!) Username tidak boleh kosong")
@@ -30,9 +39,9 @@ def daftar(database):
         database[username] = {'password' : encrypted,
                                'status' : status,
                                'salah_input' : salah}
-        
+        data_json_masuk (database)
+        print("\n(!) Register Berhasil!")
         return 
-
 
 
 
@@ -61,18 +70,20 @@ def login(database):
 
         if encrypted != database[username]['password']:
             fungsiLog(username, ngapain = "Salah Password")
+            parserLog(rekap_salah)
             database[username]['salah_input'] += 1
             print("(!) Password Salah!\n")
 
             if database[username]['salah_input'] >= 3:
                 database[username]['status'] = "NONAKTIF"
-
+                data_json_masuk (database)
                 fungsiLog(username, ngapain = "Salah Password 3 Kali", note = "[WARNING] Indikasi Brute Force, Akun di Non-Aktifkan. LOG OUT.")
                 
                 raise Exception ("Terindikasi Melakukan Brute-Force")
             continue
         else:
             database[username]['salah_input'] = 0
+            data_json_masuk (database)
             print("(!) Log in Berhasil!")
 
             fungsiLog(username, ngapain = "Login Berhasil")
