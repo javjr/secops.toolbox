@@ -43,5 +43,35 @@
         "password": "43385991f0be5fed6db7fb640c5f510d41bcaac6ecca6c842a0c2a2d2d2bf510",
         "status": "aktif",
         "salah_input": 0
+    },
+    "wondi": {
+        "password": "811786ad1ae74adfdd20dd0372abaaebc6246e343aebd01da0bfc4c02bf0106c",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "zakk": {
+        "password": "c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "qqa": {
+        "password": "da70dfa4d9f95ac979f921e8e623358236313f334afcd06cddf8a5621cf6a1e9",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "hannfar": {
+        "password": "8590c030ca0c615c82a238406daac7db99400b3783a918e23232d1ea814d923e",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "walah": {
+        "password": "86e50149658661312a9e0b35558d84f6c6d3da797f552a9657fe0558ca40cdef",
+        "status": "aktif",
+        "salah_input": 0
+    },
+    "elihan": {
+        "password": "114bd151f8fb0c58642d2170da4ae7d7c57977260ac2cc8905306cab6b2acabc",
+        "status": "aktif",
+        "salah_input": 0
     }
 }

@@ -83,9 +83,8 @@ def login(database):
             continue
         else:
             database[username]['salah_input'] = 0
-            data_json_masuk (database)
             print("(!) Log in Berhasil!")
-
+            data_json_masuk (database)
             fungsiLog(username, ngapain = "Login Berhasil")
         return username
     

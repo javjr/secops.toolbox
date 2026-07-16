@@ -3,6 +3,7 @@ import os
 import auth
 from logger import fungsiLog
 from parser import read_parser
+import time
 
 database = auth.data_json_keluar ()
 if "admin" not in database:
@@ -25,7 +26,7 @@ while True:
     print("="*50)
     print("SECOPS TOOLBOX v1.0".center(50))
     print("="*50)
-    print("\n1. Register\n2. Login\n3. Cek Database (Admin Only)\n4. Log Out\n5. Log Parser (Amin Only)")
+    print("\n1. Register\n2. Login\n3. Cek Database (Admin Only)\n4. Log Parser (Amin Only)\n5. Log Out")
     print("_"*50,"\n")
 
     pilih = input("Masukkan No. Pilihan: ")
@@ -41,6 +42,7 @@ while True:
                 break
         else:
             print("Anda Sudah Daftar!")
+            time.sleep(1)
         
     elif pilih == "2":
         if not masuk:
@@ -51,10 +53,12 @@ while True:
                 break
         else:
             print("Anda Sudah Login!")
+            time.sleep()
 
     elif pilih == "3":
         if not masuk:
             print("(!) Silakan Login Terlebih Dahulu, sebagai ADMIN!\n")
+            input("\n[Tekan ENTER untuk kembali ke menu]")
             continue
         try:
             if masuk != 'admin':
@@ -65,10 +69,12 @@ while True:
                 input("\n[Tekan ENTER untuk kembali ke menu]")
         except Exception as pesan:
             print(pesan)
+            input("\n[Tekan ENTER untuk kembali ke menu]")
             continue
     elif pilih == "4":
         if not masuk:
             print("(!) Silakan Login Terlebih Dahulu, sebagai ADMIN!\n")
+            input("\n[Tekan ENTER untuk kembali ke menu]")
             continue
         try:
             if masuk != 'admin':
@@ -78,6 +84,7 @@ while True:
             input("\n[Tekan ENTER untuk kembali ke menu]")
         except Exception as pesan:
             print(pesan)
+            input("\n[Tekan ENTER untuk kembali ke menu]")
             continue
     elif pilih == "5":
         if auth.keluar():
